@@ -1,0 +1,436 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   レスポンシブスタイル
+   - タブレット : ~1024px
+   - スマートフォン : ~768px
+   - 小型スマホ : ~480px
+   ========================================================================== */
+
+/* -----------------------------
+   タブレット (≤ 1024px)
+   ----------------------------- */
+@media (max-width: 1024px) {
+  :root {
+    --section-y: clamp(4rem, 8vw, 7rem);
+  }
+
+  /* グローバルナビをハンバーガーへ */
+  .global-nav { display: none; }
+  .hamburger { display: block; }
+
+  .concept__grid,
+  .garden__inner,
+  .invite__inner,
+  .welcome__inner,
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .concept__media {
+    max-width: 600px;
+  }
+
+  .specials__grid,
+  .spaces__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seasons__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu-list {
+    grid-template-columns: 1fr;
+  }
+
+  .access-info__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .space-feature {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .space-feature:nth-child(even) {
+    direction: ltr;
+  }
+
+  .season-block__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .season-block:nth-child(even) .season-block__inner {
+    direction: ltr;
+  }
+
+  .season-block__media {
+    max-width: 480px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .space-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero {
+    padding-top: 9rem;
+  }
+
+  /* ヒーローの縦書きはサイズを抑えめに */
+  .hero {
+    align-items: flex-end;
+  }
+}
+
+/* -----------------------------
+   スマートフォン (≤ 768px)
+   ----------------------------- */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .container { padding-inline: 1.4rem; }
+  .site-header__inner { padding-inline: 1.4rem; }
+
+  .logo__jp { font-size: 0.85rem; letter-spacing: 0.2em; }
+  .logo__en { font-size: 0.62rem; letter-spacing: 0.35em; }
+  .logo__mark { width: 40px; height: 40px; }
+
+  .hero {
+    padding: 7rem 1.4rem 3rem;
+    min-height: 100svh;
+  }
+
+  /* スマホ時は被写体の右側を見せたいので画像レイヤーを右寄せ */
+  .hero__bg {
+    background-position: center center, 72% center, center center;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+
+  .hero__copy {
+    min-height: 55svh;
+    gap: 1.2rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.2rem, 9vw, 3.6rem);
+    letter-spacing: 0.35em;
+    line-height: 1.55;
+  }
+
+  .hero__sub {
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    line-height: 2;
+    margin-top: 2rem;
+    max-height: 40svh;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__buttons .btn {
+    justify-content: center;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  .page-hero {
+    padding: 8rem 1.4rem 3rem;
+  }
+
+  .page-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .page-hero__title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+
+  .page-hero__en {
+    writing-mode: horizontal-tb;
+    border-left: 0;
+    border-top: 1px solid var(--color-line);
+    padding: 0.8rem 0 0;
+  }
+
+  .specials__grid,
+  .spaces__grid,
+  .seasons__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* スマホ：おすすめ甘味カードを横長化（左に画像・右にテキスト） */
+  .special-card {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 1.1rem;
+    row-gap: 0.3rem;
+    padding: 0.9rem;
+    align-items: start;
+  }
+
+  .special-card__media {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
+    align-self: center;
+  }
+
+  .special-card__no {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .special-card__name {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0.1rem 0 0.4rem;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .special-card__desc {
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  /* ホバーの拡大はスマホでは控えめに */
+  .special-card:hover {
+    transform: none;
+  }
+
+  /* スマホでは朱色のコーナー装飾を省略 */
+  .special-card::before,
+  .special-card::after,
+  .season-card::before {
+    display: none;
+  }
+
+  /* スマホ：静かな空間カードも横長化 */
+  .space-card {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    column-gap: 1.1rem;
+    row-gap: 0;
+    padding: 0.9rem;
+    align-items: center;
+  }
+
+  .space-card__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  .space-card__name {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+
+  /* スマホ：四季の甘味カードも横長化（左に季節漢字・右にテキスト） */
+  .season-card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    column-gap: 1.2rem;
+    row-gap: 0;
+    padding: 1.1rem 1.2rem;
+    align-items: center;
+  }
+
+  .season-card__head {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    border-bottom: 0;
+    border-right: 1px solid var(--color-line);
+    padding: 0.4rem 1rem 0.4rem 0;
+    align-self: stretch;
+  }
+
+  .season-card__kanji { font-size: 2rem; }
+
+  .season-card__body {
+    gap: 0.4rem;
+  }
+
+  .season-card:hover { transform: none; }
+
+  .menu-section__head {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .menu-section__title {
+    letter-spacing: 0.2em;
+  }
+
+  .menu-item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .menu-item__price {
+    margin-top: 0.2rem;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .info-row__label {
+    font-size: 0.8rem;
+    color: var(--color-moss);
+  }
+
+  .invite__list {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome__list li {
+    grid-template-columns: 2rem 1fr;
+    gap: 0.8rem;
+  }
+
+  .map { aspect-ratio: 1 / 1; }
+
+  .space-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* フッター */
+  .site-footer { padding: 4rem 1.4rem 1.5rem; }
+  .site-footer__inner {
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+  .site-footer__tagline { font-size: 0.95rem; }
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-head { margin-bottom: 2rem; }
+  .section-title { letter-spacing: 0.15em; }
+
+  /* モバイルメニュー */
+  .mobile-menu__link {
+    font-size: 1.2rem;
+    letter-spacing: 0.28em;
+  }
+
+  /* スマホでは縦書きの一部を控えめに */
+  .hero__romaji {
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+  }
+}
+
+/* -----------------------------
+   小型スマホ (≤ 480px)
+   ----------------------------- */
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    letter-spacing: 0.3em;
+  }
+
+  .hero__sub {
+    font-size: 0.78rem;
+    letter-spacing: 0.35em;
+  }
+
+  .concept__media {
+    grid-template-columns: 1fr;
+  }
+
+  .concept__media .placeholder:nth-child(1) {
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .season-card { padding: 1.6rem 1.2rem; }
+  .season-card__head { flex-direction: column; align-items: flex-start; }
+
+  /* 小型スマホ：横長カードの左側をさらに小さく */
+  .special-card,
+  .space-card {
+    grid-template-columns: 92px 1fr;
+    column-gap: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .season-card {
+    grid-template-columns: 76px 1fr;
+    column-gap: 1rem;
+    padding: 1rem;
+  }
+
+  .special-card__name,
+  .space-card__name { font-size: 0.95rem; }
+  .special-card__desc { font-size: 0.78rem; line-height: 1.7; }
+  .season-card__kanji { font-size: 1.7rem; }
+  .season-card__text { font-size: 0.82rem; line-height: 1.75; }
+
+  .access-info__item { padding: 1.6rem 1.2rem; }
+
+  .btn { padding: 1em 1.8em; font-size: 0.85rem; letter-spacing: 0.2em; }
+}
+
+/* -----------------------------
+   プリント対応（最低限）
+   ----------------------------- */
+@media print {
+  .site-header,
+  .hamburger,
+  .mobile-menu,
+  .hero__scroll,
+  .lightbox { display: none !important; }
+
+  body { background: #fff; color: #000; }
+  .hero, .garden, .invite, .welcome, .site-footer {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
+
+/* -----------------------------
+   モーション削減
+   ----------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+  }
+}
